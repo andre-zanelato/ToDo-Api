@@ -14,7 +14,6 @@ namespace ToDo_Api.Repository.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ToDo>().ToTable("todo");
-            
         }
     }
 }

@@ -17,6 +17,9 @@ namespace ToDo_Api.Application.Controllers
             _toDoService = toDoService;
         }
 
+        /// <summary>
+        /// Listagem de todos os TODO'S
+        /// </summary>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,6 +34,9 @@ namespace ToDo_Api.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastro de um novo TODO
+        /// </summary>
         [HttpPost]
         public IActionResult Post([FromBody]AdicionarToDoViewModel vm)
         {
@@ -45,6 +51,9 @@ namespace ToDo_Api.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Alteração de um TODO especifico
+        /// </summary>
         [HttpPut("{id:long}")]
         public IActionResult Put(long id, [FromBody] AlterarToDoViewModel vm)
         {
@@ -59,6 +68,9 @@ namespace ToDo_Api.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta um TODO especifico
+        /// </summary>
         [HttpDelete("{id:long}")]
         public IActionResult Delete(long id)
         {

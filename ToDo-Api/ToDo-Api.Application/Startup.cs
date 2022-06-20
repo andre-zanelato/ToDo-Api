@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 using ToDo_Api.Domain.Interfaces.Repository;
 using ToDo_Api.Domain.Services;
 using ToDo_Api.Repository.Context;
@@ -34,6 +37,11 @@ namespace ToDo_Api.Application
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ToDo_Api.Application", Version = "v1" });
+
+                //Para exibir os sumários no swagger
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             //Add depêndencias, utilizando scoped para manter o estado durante a request
